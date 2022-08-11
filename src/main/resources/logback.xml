@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+    <appender name="Console-Appender" class="ch.qos.logback.core.ConsoleAppender">
+        <layout>
+            <pattern>CONSOLE: %msg%n</pattern>
+        </layout>
+    </appender>
+    <appender name="File-Appender" class="ch.qos.logback.core.FileAppender">
+        <file>flatiron-spring-trace.log</file>
+        <encoder>
+            <pattern>%.-3level [THREAD:%thread] %logger %n \t\t %msg%n </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="Console-Appender" />
+        <appender-ref ref="File-Appender" />
+    </root>
+    <logger name="com.testlab2.application" level="TRACE">
+        <appender-ref ref="Console-Appender" />
+        <appender-ref ref="File-Appender" />
+    </logger>
+</configuration>
